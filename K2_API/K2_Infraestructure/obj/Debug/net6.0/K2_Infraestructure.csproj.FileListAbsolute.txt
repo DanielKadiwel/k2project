@@ -1,0 +1,15 @@
+C:\Users\danie\Videos\k2project\K2_API\K2_Infraestructure\bin\Debug\net6.0\K2_Infraestructure.deps.json
+C:\Users\danie\Videos\k2project\K2_API\K2_Infraestructure\bin\Debug\net6.0\K2_Infraestructure.dll
+C:\Users\danie\Videos\k2project\K2_API\K2_Infraestructure\bin\Debug\net6.0\K2_Infraestructure.pdb
+C:\Users\danie\Videos\k2project\K2_API\K2_Infraestructure\bin\Debug\net6.0\K2_Domain.dll
+C:\Users\danie\Videos\k2project\K2_API\K2_Infraestructure\bin\Debug\net6.0\K2_Domain.pdb
+C:\Users\danie\Videos\k2project\K2_API\K2_Infraestructure\obj\Debug\net6.0\K2_Infraestructure.csproj.AssemblyReference.cache
+C:\Users\danie\Videos\k2project\K2_API\K2_Infraestructure\obj\Debug\net6.0\K2_Infraestructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\danie\Videos\k2project\K2_API\K2_Infraestructure\obj\Debug\net6.0\K2_Infraestructure.AssemblyInfoInputs.cache
+C:\Users\danie\Videos\k2project\K2_API\K2_Infraestructure\obj\Debug\net6.0\K2_Infraestructure.AssemblyInfo.cs
+C:\Users\danie\Videos\k2project\K2_API\K2_Infraestructure\obj\Debug\net6.0\K2_Infraestructure.csproj.CoreCompileInputs.cache
+C:\Users\danie\Videos\k2project\K2_API\K2_Infraestructure\obj\Debug\net6.0\K2_Infraestructure.csproj.CopyComplete
+C:\Users\danie\Videos\k2project\K2_API\K2_Infraestructure\obj\Debug\net6.0\K2_Infraestructure.dll
+C:\Users\danie\Videos\k2project\K2_API\K2_Infraestructure\obj\Debug\net6.0\refint\K2_Infraestructure.dll
+C:\Users\danie\Videos\k2project\K2_API\K2_Infraestructure\obj\Debug\net6.0\K2_Infraestructure.pdb
+C:\Users\danie\Videos\k2project\K2_API\K2_Infraestructure\obj\Debug\net6.0\ref\K2_Infraestructure.dll

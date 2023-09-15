@@ -1,0 +1,12 @@
+C:\Users\danie\Videos\k2project\K2_API\K2_Domain\bin\Debug\net6.0\K2_Domain.deps.json
+C:\Users\danie\Videos\k2project\K2_API\K2_Domain\bin\Debug\net6.0\K2_Domain.dll
+C:\Users\danie\Videos\k2project\K2_API\K2_Domain\bin\Debug\net6.0\K2_Domain.pdb
+C:\Users\danie\Videos\k2project\K2_API\K2_Domain\obj\Debug\net6.0\K2_Domain.csproj.AssemblyReference.cache
+C:\Users\danie\Videos\k2project\K2_API\K2_Domain\obj\Debug\net6.0\K2_Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\danie\Videos\k2project\K2_API\K2_Domain\obj\Debug\net6.0\K2_Domain.AssemblyInfoInputs.cache
+C:\Users\danie\Videos\k2project\K2_API\K2_Domain\obj\Debug\net6.0\K2_Domain.AssemblyInfo.cs
+C:\Users\danie\Videos\k2project\K2_API\K2_Domain\obj\Debug\net6.0\K2_Domain.csproj.CoreCompileInputs.cache
+C:\Users\danie\Videos\k2project\K2_API\K2_Domain\obj\Debug\net6.0\K2_Domain.dll
+C:\Users\danie\Videos\k2project\K2_API\K2_Domain\obj\Debug\net6.0\refint\K2_Domain.dll
+C:\Users\danie\Videos\k2project\K2_API\K2_Domain\obj\Debug\net6.0\K2_Domain.pdb
+C:\Users\danie\Videos\k2project\K2_API\K2_Domain\obj\Debug\net6.0\ref\K2_Domain.dll
