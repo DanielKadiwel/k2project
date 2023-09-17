@@ -40,7 +40,7 @@ namespace Cliente_Api
                 options.Providers.Add<GzipCompressionProvider>();
             });
 
-            services.AddDbContext<RepositoryContext>(options => options.UseNpgsql(Configuration.GetConnectionString("ENV_DEV")));
+            services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
 
             //AddContext(services);
             AddServices(services);

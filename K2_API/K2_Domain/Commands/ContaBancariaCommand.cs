@@ -12,20 +12,16 @@ namespace K2_Domain.Commands
 {
     public class ContaBancariaCommand : BaseCommand
     {
-        public ContaBancariaEntity ContaBancariaEntity { get; set; }
+        public string NOME { get; set; }
+        public string EMAIL { get; set; }
+        public string PASSWORD { get; set; }
 
         public override bool IsValid() 
         {
-            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(ContaBancariaEntity.PASSWORD);
-            bool verificaSenha = BCrypt.Net.BCrypt.Verify(ContaBancariaEntity.PASSWORD, hashedPassword);
-
-            if (!verificaSenha)
+            if (string.IsNullOrEmpty(EMAIL))
                 return false;
 
-            if (string.IsNullOrEmpty(ContaBancariaEntity.EMAIL))
-                return false;
-
-            if (string.IsNullOrEmpty(ContaBancariaEntity.NOME))
+            if (string.IsNullOrEmpty(NOME))
                 return false;
 
             return Valid;

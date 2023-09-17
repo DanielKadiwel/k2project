@@ -1,4 +1,5 @@
 ﻿using K2_Domain.Commands;
+using K2_Domain.CommandsResults;
 using K2_Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,6 @@ namespace K2_Domain.Repositories.Interfaces
     public interface IContaBancariaRepository
     {
         public bool Adicionar(ContaBancariaEntity entity);
+        public List<ContaBancariaResult> BuscarSaldoRepository(BuscarSaldoContaBancariaCommand command);
     }
 }

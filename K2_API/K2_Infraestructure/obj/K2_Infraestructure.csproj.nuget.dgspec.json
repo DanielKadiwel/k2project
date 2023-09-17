@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[0.1.0, )"
             },
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.151, )"
+            },
             "FluentValidator": {
               "target": "Package",
               "version": "[2.0.4, )"
@@ -132,6 +136,10 @@
             "BCrypt.Net": {
               "target": "Package",
               "version": "[0.1.0, )"
+            },
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.151, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",

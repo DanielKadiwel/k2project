@@ -12,6 +12,6 @@ namespace K2_Infraestructure.Data
     {
         public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options) { }
 
-        public DbSet<ContaBancariaEntity> cliente { get; set; }
+        public DbSet<ContaBancariaEntity> ContaBancaria { get; set; }
     }
 }

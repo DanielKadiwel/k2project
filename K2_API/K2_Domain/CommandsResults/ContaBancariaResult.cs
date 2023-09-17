@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace K2_Domain.Entities
+namespace K2_Domain.CommandsResults
 {
-    [Table("CONTA_BANCARIA")]
-    public class ContaBancariaEntity
+    public class ContaBancariaResult
     {
         public int ID { get; set; }
         public string NOME { get; set; }
