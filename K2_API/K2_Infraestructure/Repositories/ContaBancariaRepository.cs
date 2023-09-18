@@ -14,6 +14,9 @@ using Dapper;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace K2_Infraestructure.Repositories
 {
@@ -80,6 +83,29 @@ namespace K2_Infraestructure.Repositories
             }
             catch (Exception ex) 
             {
+                throw;
+            }
+        }
+
+        public bool Login(string email, string hashedPassword)
+        {
+            try
+            {
+                var usuario = _context.ContaBancaria.FirstOrDefault(u => u.EMAIL == email);
+
+                if (usuario == null)
+                    return false;
+
+                if (hashedPassword != usuario.PASSWORD)
+                {
+                    return false;
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+
                 throw;
             }
         }

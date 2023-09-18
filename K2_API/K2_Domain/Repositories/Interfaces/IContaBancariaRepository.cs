@@ -16,6 +16,7 @@ namespace K2_Domain.Repositories.Interfaces
         public int MovimentacoesContaRepository(MovimentacoesContaCommands command);
         public ContaBancariaResult BuscarContaPorNumeroRepository(string NUMERO_CONTA);
         public bool AtualizarValoresConta(ContaBancariaEntity conta);
+        public bool Login(string email, string hashedPassword);
 
         //public ContaBancariaResult BuscarExtratoRepository(string numeroConta);
     }

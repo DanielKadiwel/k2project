@@ -2,7 +2,9 @@
 using K2_Domain.Commands;
 using K2_Domain.CommandsResults;
 using K2_Domain.Handlers;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace K2_API.Controllers
 {
@@ -12,7 +14,7 @@ namespace K2_API.Controllers
     {
         private readonly ContaBancariaHandler _handler;
 
-        public ContaBancariaController(ContaBancariaHandler handler) :base(handler)
+        public ContaBancariaController(ContaBancariaHandler handler) : base(handler)
         {
             _handler = handler;
         }
@@ -47,7 +49,7 @@ namespace K2_API.Controllers
 
         [HttpGet("saldo")]
         public string SaldoConta([FromBody] BuscarSaldoExtratoContaBancariaCommand command)
-         {
+        {
             try
             {
                 var result = _handler.BuscarSaldoExtrato(command, "Saldo");
@@ -59,18 +61,23 @@ namespace K2_API.Controllers
             }
         }
 
-        //[HttpGet("extrato")]
-        //public string ExtratoConta([FromBody] BuscarSaldoExtratoContaBancariaCommand command)
-        //{
-        //    try
-        //    {
-        //        var result = _handler.BuscarSaldoExtrato(command, "Extrato");
-        //        return result;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
+        [HttpPost("login")]
+        public bool Login(LoginCommand command)
+        {
+            try
+            {
+                if (!_handler.Login(command))
+                    return false;
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+        }
+
     }
 }

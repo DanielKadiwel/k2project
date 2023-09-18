@@ -4,6 +4,7 @@ using K2_Domain.Repositories.Interfaces;
 using BCrypt.Net;
 using K2_Domain.Entities;
 using K2_Domain.CommandsResults;
+using Microsoft.AspNetCore.Identity;
 
 namespace K2_Domain.Handlers
 {
@@ -31,8 +32,10 @@ namespace K2_Domain.Handlers
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(command.PASSWORD);
                 bool verificaSenha = BCrypt.Net.BCrypt.Verify(command.PASSWORD, hashedPassword);
 
-                if (!verificaSenha)
-                    throw new Exception();
+                if(!verificaSenha)
+                {
+                    return "Erro ao definir senha";
+                }
 
                 var entity = new ContaBancariaEntity();
                 Random random = new Random();
@@ -155,5 +158,21 @@ namespace K2_Domain.Handlers
             }
         }
 
+        public bool Login(LoginCommand command)
+        {
+            try
+            {
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(command.PASSWORD);
+
+                if (!_repository.Login(command.EMAIL, hashedPassword))
+                        return false;
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }
