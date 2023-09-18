@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace K2_Domain.Entities
 {
     [Table("CONTA_BANCARIA")]
-    public class ContaBancariaEntity
+    public class ContaBancariaEntity 
     {
         public int ID { get; set; }
         public string NOME { get; set; }
@@ -17,5 +17,7 @@ namespace K2_Domain.Entities
         public string? NUMERO_CONTA { get; set; }
         public int? SALDO { get; set; }
         public int? EXTRATO { get; set; }
+        public int? ID_MOVIMENTACAO { get; set; }
+
     }
 }

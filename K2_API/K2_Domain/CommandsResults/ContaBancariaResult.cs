@@ -15,5 +15,6 @@ namespace K2_Domain.CommandsResults
         public string? NUMERO_CONTA { get; set; }
         public int? SALDO { get; set; }
         public int? EXTRATO { get; set; }
+        public int? ID_MOVIMENTACAO { get; set; }
     }
 }

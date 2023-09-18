@@ -39,9 +39,9 @@ namespace K2_Domain.Handlers
 
                 entity.EMAIL = command.EMAIL;
                 entity.NOME = command.NOME;
+                entity.SALDO = command.SALDO;
                 entity.PASSWORD = hashedPassword;
                 entity.NUMERO_CONTA = random.Next(100000, 999999).ToString();
-                entity.SALDO = 0;
                 entity.EXTRATO = 0;
 
                 if (!_repository.Adicionar(entity))
@@ -61,11 +61,71 @@ namespace K2_Domain.Handlers
             }
         }
 
-        public string BuscarSaldo(BuscarSaldoContaBancariaCommand command)
+        public string MovimentacoesConta(MovimentacoesContaCommands command)
+        {
+            try
+            {
+                if (!command.IsValid())
+                {
+                    AddNotifications(command.Notifications);
+                    throw new Exception();
+                }
+                var IdMovimentacao = 0;
+
+                var contaOrigemResult = _repository.BuscarContaPorNumeroRepository(command.CONTA_ORIGEM);
+                var entityOrigem = new ContaBancariaEntity();
+                var contaDestinoResult = _repository.BuscarContaPorNumeroRepository(command.CONTA_DESTINO);
+                var entityDestino = new ContaBancariaEntity();
+
+                //CONTA ORIGEM
+                entityOrigem.ID = contaOrigemResult.ID;
+                entityOrigem.NOME = contaOrigemResult.NOME;
+                entityOrigem.NUMERO_CONTA = contaOrigemResult.NUMERO_CONTA;
+                entityOrigem.EMAIL = contaOrigemResult.EMAIL;
+                entityOrigem.EXTRATO = contaOrigemResult.EXTRATO;
+                entityOrigem.SALDO = contaOrigemResult.SALDO - command.VALOR;
+                //CONTA DESTINO
+                entityDestino.ID = contaOrigemResult.ID;
+                entityDestino.NOME = contaOrigemResult.NOME;
+                entityDestino.NUMERO_CONTA = contaOrigemResult.NUMERO_CONTA;
+                entityDestino.EMAIL = contaOrigemResult.EMAIL;
+                entityDestino.EXTRATO = contaOrigemResult.EXTRATO;
+                entityDestino.SALDO = contaOrigemResult.SALDO + command.VALOR;
+
+                IdMovimentacao = _repository.MovimentacoesContaRepository(command);
+
+                entityOrigem.ID_MOVIMENTACAO = IdMovimentacao;
+                entityDestino.ID_MOVIMENTACAO = IdMovimentacao;
+
+                var list = new List<ContaBancariaEntity>();
+                list.Add(entityOrigem);
+                list.Add(entityDestino);
+
+                foreach(var item in list)
+                {
+                    if (!_repository.AtualizarValoresConta(item))
+                    {
+                        return $"Erro ao atualizar valores entre contas {command.CONTA_ORIGEM} > {command.CONTA_DESTINO}";
+                    }
+                }
+
+                return $"Movimentação {IdMovimentacao} efetuada com sucesso.\n" +
+                       $"Valor: {command.VALOR}.\n" +
+                       $"Conta de Origem: {command.CONTA_ORIGEM}\n" +
+                       $"Conta de Destino: {command.CONTA_DESTINO}\n";
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public string BuscarSaldoExtrato(BuscarSaldoExtratoContaBancariaCommand command, string TipoBusca)
         {
             try
             {
                 var mensagem = "";
+                //var dadosExtrato = null;
 
                 if (!command.IsValid())
                 {
@@ -73,19 +133,19 @@ namespace K2_Domain.Handlers
                     throw new Exception();
                 }
 
-                var dadosConta = _repository.BuscarSaldoRepository(command.NUMERO_CONTA);
-
-                var result = new ContaBancariaResult();
-
-                foreach (var dados in dadosConta)
+                if (TipoBusca == "Saldo")
                 {
-                    dados.NOME = result.NOME;
-                    dados.EMAIL = result.EMAIL;
-                    dados.NUMERO_CONTA = result.NUMERO_CONTA;
-                    dados.SALDO = result.SALDO;
+                    var dadosSaldo = _repository.BuscarContaPorNumeroRepository(command.NUMERO_CONTA);
+
+                    mensagem = $"Sr(a) {dadosSaldo.NOME}. Nº{command.NUMERO_CONTA} \n O seu saldo é de: {dadosSaldo.SALDO}";
+
                 }
 
-                mensagem = $"Saldo da conta {result.NUMERO_CONTA}: {result.SALDO}";
+                //else if (TipoBusca == "Extrato")
+                //{
+                //    dadosExtrato = _repository.BuscarExtratoRepository(command.NUMERO_CONTA);
+
+                //}
 
                 return mensagem;
             }
@@ -95,16 +155,5 @@ namespace K2_Domain.Handlers
             }
         }
 
-        public string BuscarExtrato(BuscarExtratoContaBancariaCommand command)
-        {
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-        }
     }
 }

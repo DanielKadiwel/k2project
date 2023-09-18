@@ -13,6 +13,10 @@ namespace K2_Domain.Repositories.Interfaces
     public interface IContaBancariaRepository
     {
         public bool Adicionar(ContaBancariaEntity entity);
-        public List<ContaBancariaResult> BuscarSaldoRepository(BuscarSaldoContaBancariaCommand command);
+        public int MovimentacoesContaRepository(MovimentacoesContaCommands command);
+        public ContaBancariaResult BuscarContaPorNumeroRepository(string NUMERO_CONTA);
+        public bool AtualizarValoresConta(ContaBancariaEntity conta);
+
+        //public ContaBancariaResult BuscarExtratoRepository(string numeroConta);
     }
 }

@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace K2_Domain.Commands
 {
-    public class BuscarSaldoContaBancariaCommand : BaseCommand
+    public class BuscarSaldoExtratoContaBancariaCommand : BaseCommand
     {
-        public int NUMERO_CONTA { get; set; }
+        public string? NUMERO_CONTA { get; set; }
 
         public override bool IsValid()
         {
-            if (NUMERO_CONTA == 0)
+            if (string.IsNullOrEmpty(NUMERO_CONTA))
                 return false;
 
             return Valid;

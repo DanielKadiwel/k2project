@@ -15,6 +15,7 @@ namespace K2_Domain.Commands
         public string NOME { get; set; }
         public string EMAIL { get; set; }
         public string PASSWORD { get; set; }
+        public int SALDO { get; set; }
 
         public override bool IsValid() 
         {

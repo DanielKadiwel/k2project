@@ -31,12 +31,12 @@ namespace K2_API.Controllers
             }
         }
 
-        [HttpGet("saldo")]
-        public string SaldoConta([FromBody] BuscarSaldoContaBancariaCommand command)
+        [HttpPost("movimentacao-conta")]
+        public string MovimentacoesConta([FromBody] MovimentacoesContaCommands command)
         {
             try
             {
-                var result = _handler.BuscarSaldo(command);
+                var result = _handler.MovimentacoesConta(command);
                 return result;
             }
             catch (Exception ex)
@@ -45,12 +45,12 @@ namespace K2_API.Controllers
             }
         }
 
-        [HttpGet("extrato")]
-        public string ExtratoConta([FromBody] ContaBancariaCommand command)
-        {
+        [HttpGet("saldo")]
+        public string SaldoConta([FromBody] BuscarSaldoExtratoContaBancariaCommand command)
+         {
             try
             {
-                var result = _handler.BuscarExtrato(command);
+                var result = _handler.BuscarSaldoExtrato(command, "Saldo");
                 return result;
             }
             catch (Exception ex)
@@ -58,5 +58,19 @@ namespace K2_API.Controllers
                 throw ex;
             }
         }
+
+        //[HttpGet("extrato")]
+        //public string ExtratoConta([FromBody] BuscarSaldoExtratoContaBancariaCommand command)
+        //{
+        //    try
+        //    {
+        //        var result = _handler.BuscarSaldoExtrato(command, "Extrato");
+        //        return result;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
     }
 }
